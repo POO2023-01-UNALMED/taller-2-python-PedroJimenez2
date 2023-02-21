@@ -5,8 +5,17 @@ class Asiento:
         self.registro = registro
 
     def cambiarColor(self,color):
-        pass
-
+        if color == "rojo":
+            self.color = color
+        elif color == "verde":
+            self.color = color
+        elif color == "amarillo":
+            self.color = color
+        elif color == "negro":
+            self.color = color
+        elif color == "blanco":
+            self.color = color
+            
 class Auto:
     def __init__(self,modelo,precio,asientos,marca,motor,registro,cantidadCreados):
         self.modelo = modelo
@@ -18,12 +27,21 @@ class Auto:
         self.cantidadCreados = cantidadCreados
 
     def cantidadAsientos(self):
-        pass
+        cont = 0
+        for asiento in self.Asientos:
+                if asiento != None:
+                    cont +=1
+        return cont
+            
     def verificarIntegridad(self):
-        if self.registro.Asiento != self.registro.Auto and self.registro.Asiento != self.registro.motor and self.registro.Auto != self.registro.Motor:
-            print("Las piezas no son originales")
+        if self.registro == self.motor.registro:
+            for asien in self.asientos:
+                if asien != None:
+                    if self.registro != asien.registro:
+                        return "Las piezas no son originales"
+            return "Auto original"
         else:
-            print("Auto original")
+            return "Las piezas no son originales"
 
 class Motor:
     def __init__(self,numeroCilindros,tipo,registro):
@@ -32,17 +50,13 @@ class Motor:
         self.registro = registro
 
     def cambiarRegistro(self,registro):
-        pass
+        self.registro = registro
+
     def asignarTipo(self,tipo):
         if tipo == "electrico":
-            print("electrico")
+            self.tipo = tipo
         elif tipo == "gasolina":
-            print("gasolina")
-        else:
-            pass
+            self.tipo = tipo
 
-if __name__ == "__main__":
-    asiento1 = Asiento("Verde",20,509)
-    auto1 = Auto("2018",25,[Asiento],"BMW",Motor,509,5) 
-    motor1 = Motor(5,"cilindrado",509)
-    print(auto1.asientos)
+
+    
